@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "nombre": "Cerezas",
+      "precio": 10000
+    },
+    {
+      "id": 2,
+      "nombre": "Kombucha",
+      "precio": 5000
+    },
+    {
+      "id": 3,
+      "nombre": "Kimchi",
+      "precio": 7000
+    }
+  ]

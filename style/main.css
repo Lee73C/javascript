@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: black;
+}
+
+header .icono {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50px;
+    right: 270px;
+    text-align: right;
+}
+
+header .title {
+    color: white;
+    font-size: 50px;
+    width: 350px;
+    height: 60px;
+    position: absolute;
+    top: 36px;
+    right: 40px;
+    text-align: right;
+}
+
+header .subtitle {
+    color: whitesmoke;
+    font-size: medium;
+    font-weight: normal;
+    font-style: italic;
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    top: 250px;
+    right: 40px;
+    text-align: right;
+}
+
+header .banner {
+    object-fit: cover;
+    width: 100%;
+}
+
+header nav {
+    margin-right: 100px;
+    margin-left: 80px;
+    background-color: black;
+    text-align: center;
+}
+
+header .navbar-brand {
+    width: 20%;
+}
+
+header .nav-item {
+    list-style: none;
+    text-decoration: none;
+}
+
+header .nav-item .nav-link {
+    color: white;
+}
+
+.main-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.main-index .parrafos {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    margin: 15px;
+}
+
+.main-index .parrafos .bienvenida,
+.main-index .parrafos .descripcion {
+    margin: 20px;
+    grid-column: span 2;
+}
+
+.main-index .parrafos .canister,
+.main-index .parrafos .vegetables {
+    grid-row: span 2;
+    width: 200px;
+    height: 200px;
+    position: sticky;
+    top: 200px;
+}
+
+.main-index #productos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main-index #productos .cerezas,
+.main-index #productos .kombucha,
+.main-index #productos .kimchi {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: center;
+    margin: 30px;
+}
+
+.main-index #productos .cerezas img,
+.main-index #productos .kombucha img,
+.main-index #productos .kimchi img {
+    object-fit: cover;
+    height: 200px;
+    width: 100px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.main-index #productos .cerezas p,
+.main-index #productos .kombucha p,
+.main-index #productos .kimchi p {
+    margin: 5px;
+}
+
+.addCarrito {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    margin: 5px;
+}
+
+.carrito {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.carrito h3 {
+    font-size: 1.5em;
+}
+
+.carrito ul {
+    list-style: none;
+}
+
+.carrito p {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.carrito .vaciar {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    margin: 5px;
+}
+
+.carrito .menos,
+.carrito .mas {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 20px;
+    margin: 5px;
+}
+
+.carrito .cerrarCarrito {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    color: black;
+}
+
+.carrito-icon {
+    right: 20px;
+    cursor: pointer;
+}
+
+.icono-carrito {
+    width: 30px;
+    height: 30px;
+}
+
+.seleccionar,
+.calcular {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    margin: 5px;
+}
+
+.ingredientes {
+    font-weight: normal;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+footer img {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+
+.opciones {
+    margin-top: 30px;
+}
+
+.opciones h3 {
+    margin-bottom: 10px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.input {
+    width: 310px;
+    text-align: center;
+}
+
+h4 {
+    margin: 20px;
+    margin-top: 10px;
+}

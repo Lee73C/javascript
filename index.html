@@ -1,52 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beardy's Boys Fermentos</title>
-    <style>
-        body {
-            font-size: 16px;
-        }
-
-        @media screen and (max-width: 768px) {
-            body {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <title>Home - Beardy Boy's Fermentos</title>
+    <link rel="stylesheet" href="style/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <img src="./img/BBF Wallpaper js.jpg" alt="Imagen de fondo"
-        style="width:100%; height:auto; position: absolute; opacity: 0.7; z-index: -1;">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <h1 style="text-align:center;">BIENVENIDOS</h1>
-    <h1 style="text-align: center;">FERMENTLOVERS!</h1>
-    <br>
-    <h2 style="text-align: center;"><strong>TU CALCULADORA DE FERMENTOS</strong></h2>
+    <header>
+        <img src="./img/spices banner.jpg" alt="Banner" class="banner">
+        <div class="title"><strong>BEARDY BOY'S FERMENTOS</strong></div>
+        <img src="./img/beard white icon-remove.png" alt="icono" class="icono">
+        <div class="subtitle">Superalimentos con millones de beneficios en su interior.</div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="index.html">
+                <img src="./img/beard white icon-remove.png" class="navbar-brand"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                    </li>
+                </ul>
+                <div class="carrito-icon"><img src="./img/carrito-icon.png" class="navbar-brand, icono-carrito"
+                        onclick="abrirCarrito()"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="main-index">
+        <div class="carrito-icon" onclick="abrirCarrito()">
+            <img src="img/carrito-icon.png" alt="Carrito" class="icono-carrito">
+        </div>
+        <div>
+            <h1>Bienvenidos FermentLovers!</h1>
+        </div>
+        <div class="parrafos">
+            <div><img src="./img/icon-canister.png" class="canister" alt="icono de conserva">
+            </div>
+            <div>
+                <h2 class="felicidades">Felicidades por llegar a nuestra pagina para conocer los mejores productos
+                    fermentados del mercado,
+                    sus
+                    beneficios para tu salud y con el mejor estilo!
+                </h2>
+                <p class="descripcion">La fermentación es un proceso natural en el que microorganismos como bacterias,
+                    levaduras y mohos
+                    descomponen los azúcares y otros componentes de los alimentos, creando compuestos beneficiosos como
+                    ácidos orgánicos, vitaminas y enzimas. Este proceso no solo mejora la conservación y el sabor de los
+                    alimentos, sino que también potencia su valor nutricional.
 
-</body>
+                    Los productos fermentados son ricos en probióticos, que son bacterias beneficiosas para el
+                    intestino, y
+                    se ha demostrado que ayudan a mejorar la digestión, fortalecer el sistema inmunológico y equilibrar
+                    la
+                    microbiota intestinal, lo que contribuye a una mejor salud general.
+                </p>
+            </div>
+            <div><img src="./img/vegetables-icon.png" class="vegetables" alt="icono de vegetales">
+            </div>
+        </div>
+        <h2>Revisa nuestros productos!</h2>
+        <h3>Aqui puedes encontrar los productos listos para su consumo</h3>
+        <div id="productos" class="productos"></div>
+
+        <h2>Calculadora de Fermentos</h2>
+        <h3>Aca tienes los mismos productos pero te mostramos como se realizan!</h3>
+
+        <div class="opciones">
+            <h3>Selecciona tu fermentado favorito:</h3>
+            <form id="formOpciones">
+                <label>
+                    <input type="radio" name="fermentado" value="cerezas"> Cerezas en Vinagre
+                </label><br>
+                <label>
+                    <input type="radio" name="fermentado" value="kombucha"> Kombucha
+                </label><br>
+                <label>
+                    <input type="radio" name="fermentado" value="kimchi"> Kimchi
+                </label><br>
+                <button class="seleccionar" type="button" onclick="seleccionarOpcion()">Seleccionar</button>
+            </form>
+        </div>
+
+        <div id="resultado"></div>
 
 
 
+        <div id="carrito" class="carrito">
+            <span class="cerrarCarrito" onclick="cerrarCarrito()">X</span>
+            <h3>Carrito de Compras</h3>
+            <ul id="carritoLista"></ul>
+            <p id="totalCarrito">Total: $0</p>
+            <button class="vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </div>
 
-<footer>
-    <br><br><br><br><br><br>
-    <table width="100%">
-        <tr>
-            <td align="center" valign="middle">
-                <img src="./img/instagram.png" alt="enlace a Instagram"
-                    style="text-align: center; width: 20px;height: 20px; margin: 10px;">
-                <img src="./img/facebook.png" alt="enlace a Facebook"
-                    style="text-align: center; width: 20px;height: 20px; margin: 10px;">
-            </td>
-        </tr>
-    </table>
-    <p class="p-footer" style="text-align: center;"> Beardy Boy's Fermentos© <br> Todos los derechos reservados </p>
-</footer>
-<script src="Javascript/java.js"></script>
+
+    </main>
+
+    <footer>
+        <img src="./img/instagram.png" alt="enlace a Instagram">
+        <img src="./img/facebook.png" alt="enlace a Facebook">
+        <p class="p-footer"> Beardy Boy's Fermentos© <br> Todos los derechos reservados </p>
+    </footer>
+
+    <script src="javascript/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

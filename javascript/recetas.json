@@ -1,0 +1,29 @@
+{
+    "kimchi": [
+        { "nombre": "repollo", "cantidad": 825, "unidad": "grs" },
+        { "nombre": "jengibre", "cantidad": 50, "unidad": "grs" },
+        { "nombre": "ajo", "cantidad": 6, "unidad": "dientes" },
+        { "nombre": "aji", "cantidad": 50, "unidad": "grs" },
+        { "nombre": "zanahoria", "cantidad": 3, "unidad": "unidades" },
+        { "nombre": "cebollin", "cantidad": 4, "unidad": "unidades" },
+        { "nombre": "salsaPescado", "cantidad": 400, "unidad": "ml" },
+        { "nombre": "azucar", "cantidad": 65, "unidad": "grs" },
+        { "nombre": "lima", "cantidad": 2, "unidad": "unidades" },
+        { "nombre": "agua", "cantidad": 200, "unidad": "ml" }
+    ],
+    "kombucha": [
+        { "nombre": "te", "cantidad": 2, "unidad": "cucharadas" },
+        { "nombre": "azucar", "cantidad": 200, "unidad": "grs" },
+        { "nombre": "aguaHervida", "cantidad": 1000, "unidad": "ml" },
+        { "nombre": "aguaFiltrada", "cantidad": 1000, "unidad": "ml" },
+        { "nombre": "scoby", "cantidad": 1, "unidad": "unidades" },
+        { "nombre": "kombucha", "cantidad": 250, "unidad": "ml" }
+    ],
+    "cerezas": [
+        { "nombre": "cerezas", "cantidad": 600, "unidad": "grs" },
+        { "nombre": "azucar", "cantidad": 600, "unidad": "grs" },
+        { "nombre": "canela", "cantidad": 1, "unidad": "rama" },
+        { "nombre": "clavos", "cantidad": 2, "unidad": "unidades" },
+        { "nombre": "anis", "cantidad": 1, "unidad": "unidad" }
+    ]
+}
