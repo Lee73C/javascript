@@ -119,7 +119,7 @@ function vaciarCarrito() {
 }
 
 // Cerrar carrito con la "X"
-document.getElementById('cerrarCarrito').addEventListener('click', cerrarCarrito);
+document.querySelector('cerrarCarrito').addEventListener('click', cerrarCarrito);
 
 // Cargar el carrito al iniciar la página
 actualizarCarrito();
