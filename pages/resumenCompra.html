@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Beardy Boy's Fermentos</title>
+    <link rel="stylesheet" href="/style/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body id="compra">
+    <header>
+        <img src="/img/spices banner.jpg" alt="Banner" class="banner">
+        <div class="title"><strong>BEARDY BOY'S FERMENTOS</strong></div>
+        <img src="/img/beard white icon-remove.png" alt="icono" class="icono">
+        <div class="subtitle">Superalimentos con millones de beneficios en su interior.</div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="/index.html">
+                <img src="/img/beard white icon-remove.png" class="navbar-brand"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="resumen">
+        <section id="resumenCompra">
+            <h1>Resumen de tu Compra</h1>
+            <ul id="listaCarrito"></ul>
+            <p id="totalCarrito">Total: $0</p>
+        </section>
+        <section id="formularioCliente">
+            <h1>Datos del Cliente</h1>
+            <form id="formCompra">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required class="form-control">
+                </div>
+                <div>
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required class="form-control">
+                </div>
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required class="form-control">
+                </div>
+                <div>
+                    <label for="identificacion">Identificación:</label>
+                    <input type="text" id="identificacion" name="identificacion" required class="form-control">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required class="form-control">
+                </div>
+                <button type="submit" id="confirmarCompra">Confirmar Compra</button>
+            </form>            
+        </section>
+    </main>
+
+    <footer>
+        <img src="/img/instagram.png" alt="enlace a Instagram">
+        <img src="/img/facebook.png" alt="enlace a Facebook">
+        <p class="p-footer"> Beardy Boy's Fermentos© <br> Todos los derechos reservados </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/javascript/main.js"></script>
+</body>
+</html>

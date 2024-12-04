@@ -1,17 +1,21 @@
+const isResumenCompraPage = window.location.href.includes("/pages/resumenCompra.html");
+const isIndexPage = window.location.href.includes("index.html");
+
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('javascript/productos.json')
+fetch('../javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
-        console.log(productos);
-        mostrarProductos();
+        if (window.location.pathname.includes('index.html')) {
+            mostrarProductos();
+        }
     })
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('javascript/recetas.json')
+    fetch('../javascript/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
@@ -19,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error al cargar las recetas:', error));
 });
 
-
+if (isIndexPage) {
 // Función para mostrar los productos
 function mostrarProductos() {
     const contenedorProductos = document.getElementById('productos');
@@ -65,6 +69,7 @@ function agregarAlCarrito(producto, precio) {
 function actualizarCarrito() {
     const carritoLista = document.getElementById('carritoLista');
     const totalCarrito = document.getElementById('totalCarrito');
+    const carritoAcciones = document.getElementById('carritoAcciones'); // Contenedor para los botones de acción
 
     carritoLista.innerHTML = '';
     let total = 0;
@@ -81,6 +86,12 @@ function actualizarCarrito() {
     });
 
     totalCarrito.innerText = `Total: $${total.toLocaleString('es-ES')}`;
+
+    // Agregar botones si no existen
+    carritoAcciones.innerHTML = `
+        <button onclick="vaciarCarrito()" class="vaciar">Vaciar Carrito</button>
+        <button onclick="comprar()" class="comprar">Comprar</button>
+    `;
 }
 
 // Función para cambiar la cantidad de un producto
@@ -96,6 +107,20 @@ function cambiarCantidad(index, cambio) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
     actualizarCarrito();
+}
+function comprar() {
+    if (carrito.length === 0) {
+        const alertContainer = document.getElementById('carritoVacio') || crearContenedorAlerta();
+        
+        alertContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                El carrito está vacío. Agrega productos antes de continuar con la compra.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        return;
+    }
+    window.location.href = '/pages/resumenCompra.html';
 }
 
 function abrirCarrito() {
@@ -117,9 +142,6 @@ function vaciarCarrito() {
     actualizarCarrito();
     cerrarCarrito();
 }
-
-// Cerrar carrito con la "X"
-document.querySelector('cerrarCarrito').addEventListener('click', cerrarCarrito);
 
 // Cargar el carrito al iniciar la página
 actualizarCarrito();
@@ -174,3 +196,92 @@ function calcularIngredientes(tipo, cantidadPrincipal) {
     });
     resultadoDiv.innerHTML += '</ul>';
 }
+}
+//JS para el resumenCompra.html:
+if (isResumenCompraPage) {
+document.addEventListener('DOMContentLoaded', () => {
+    const listaCarrito = document.getElementById('listaCarrito');
+    const totalCarrito = document.getElementById('totalCarrito');
+    
+    // Obtener el carrito de localStorage
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let total = 0;
+
+    // Mostrar los productos del carrito
+    listaCarrito.innerHTML = ''; // Limpiar lista
+    carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = `${item.producto} - $${item.precio.toLocaleString('es-ES')} x ${item.cantidad}`;
+        listaCarrito.appendChild(li);
+        total += item.precio * item.cantidad;
+    });
+
+    // Mostrar el total del carrito
+    totalCarrito.innerText = `Total: $${total.toLocaleString('es-ES')}`;
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const validation = new JustValidate('#formCompra');
+
+    validation
+        .addField('#nombre', [
+            {
+                rule: 'required',
+                errorMessage: 'El nombre es obligatorio',
+            },
+        ])
+        .addField('#apellido', [
+            {
+                rule: 'required',
+                errorMessage: 'El apellido es obligatorio',
+            },
+        ])
+        .addField('#direccion', [
+            {
+                rule: 'required',
+                errorMessage: 'La dirección es obligatoria',
+            },
+        ])
+        .addField('#identificacion', [
+            {
+                rule: 'required',
+                errorMessage: 'La identificación es obligatoria',
+            },
+            {
+                rule: 'customRegexp',
+                value: /^[0-9]{7,8}-[a-zA-Z0-9]$/,
+                errorMessage: 'Debe tener el formato 12345678-1',
+            },
+        ])
+        .addField('#email', [
+            {
+                rule: 'required',
+                errorMessage: 'El email es obligatorio',
+            },
+            {
+                rule: 'email',
+                errorMessage: 'Por favor, ingresa un email válido',
+            },
+        ])
+        .onSuccess((event) => {
+            // Prevenir el envío por defecto
+            event.preventDefault();
+
+            // Obtener valores del formulario
+            const formData = new FormData(event.target);
+            const nombre = formData.get('nombre');
+
+            // Mostrar mensaje de agradecimiento
+            Swal.fire({
+                icon: 'success',
+                title: '¡Compra confirmada!',
+                text: `Gracias ${nombre} por tu compra. Esperamos que disfrutes de nuestros productos.`,
+                confirmButtonText: 'Aceptar',
+            }).then(() => {
+                localStorage.removeItem('carrito');
+                event.target.reset();
+                window.location.href = '/index.html';
+            });
+        });
+});
+};
