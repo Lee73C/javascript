@@ -1,3 +1,4 @@
+//El codigo esta correcto para ser revisado con Live Server, al revisarlo desde GitHub Pages las funciones no se activan
 const isResumenCompraPage = window.location.href.includes("/pages/resumenCompra.html");
 const isIndexPage = window.location.href.includes("index.html");
 
