@@ -1,11 +1,10 @@
-//El codigo esta correcto para ser revisado con Live Server, al revisarlo desde GitHub Pages las funciones no se activan
-const isResumenCompraPage = window.location.href.includes("/pages/resumenCompra.html");
-const isIndexPage = window.location.href.includes("index.html");
+const isResumenCompraPage = window.location.href.includes("javascript/pages/resumenCompra.html");
+const isIndexPage = window.location.href.includes("javascript/index.html");
 
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('productos.json')
+fetch('/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -16,7 +15,7 @@ fetch('productos.json')
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('recetas.json')
+    fetch('/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
