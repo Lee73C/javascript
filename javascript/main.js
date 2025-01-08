@@ -1,5 +1,5 @@
 const isResumenCompraPage = window.location.href.includes("./pages/resumenCompra.html");
-const isIndexPage = window.location.href.includes("./javascript/index.html");
+const isIndexPage = window.location.href.includes("index.html");
 
 let productos = [];
 
