@@ -1,10 +1,10 @@
-const isResumenCompraPage = window.location.href.includes("/javascript/pages/resumenCompra.html");
+const isResumenCompraPage = window.location.href.includes("./pages/resumenCompra.html");
 const isIndexPage = window.location.href.includes("/javascript/index.html");
 
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('/javascript/productos.json')
+fetch('./javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -15,7 +15,7 @@ fetch('/javascript/productos.json')
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/javascript/recetas.json')
+    fetch('./javascript/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
