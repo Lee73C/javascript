@@ -4,7 +4,7 @@ const isIndexPage = window.location.href.includes("index.html");
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('./javascript/productos.json')
+fetch('https://tuusuario.github.io/javascript/javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -15,7 +15,7 @@ fetch('./javascript/productos.json')
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('./javascript/recetas.json')
+    fetch('https://tuusuario.github.io/javascript/javascript/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
