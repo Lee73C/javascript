@@ -4,7 +4,7 @@ const isIndexPage = window.location.href.includes("index.html");
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('javascript/productos.json')
+fetch('./javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -15,7 +15,7 @@ fetch('javascript/productos.json')
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('javascript/recetas.json')
+    fetch('./javascript/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
@@ -34,7 +34,7 @@ function mostrarProductos() {
         divProducto.classList.add('producto');
 
         divProducto.innerHTML = `<div class="${producto.nombre.toLowerCase()}">
-      <img src="img/${producto.nombre.toLowerCase()}.png" alt="${producto.nombre}">
+      <img src="./img/${producto.nombre.toLowerCase()}.png" alt="${producto.nombre}">
       <p class="nomProd">${producto.nombre}</p>
       <p>$${producto.precio.toLocaleString('es-ES')}</p>
       <button class="addCarrito" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar al carrito</button>
