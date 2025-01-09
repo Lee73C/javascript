@@ -4,7 +4,7 @@ const isIndexPage = window.location.href.includes("index.html");
 let productos = [];
 
 // Cargar los productos y recetas desde un archivo JSON
-fetch('https://lee73c.github.io/javascript/javascript/productos.json')
+fetch('./javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -15,7 +15,7 @@ fetch('https://lee73c.github.io/javascript/javascript/productos.json')
     .catch(error => console.error('Error al cargar productos:', error));
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://lee73c.github.io/javascript/javascript/recetas.json')
+    fetch('./javascript/recetas.json')
         .then(response => response.json())
         .then(data => {
             window.recetas = data;
@@ -120,7 +120,7 @@ function comprar() {
         `;
         return;
     }
-    window.location.href = '/pages/resumenCompra.html';
+    window.location.href = './pages/resumenCompra.html';
 }
 
 function abrirCarrito() {
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).then(() => {
                 localStorage.removeItem('carrito');
                 event.target.reset();
-                window.location.href = '/index.html';
+                window.location.href = '../index.html';
             });
         });
 });
