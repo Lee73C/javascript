@@ -223,3 +223,96 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error al cargar las recetas:', error));
     }
 });
+
+// Función para manejar el resumen de compra
+function inicializarResumenCompra() {
+    const listaCarrito = document.getElementById('listaCarrito');
+    const totalCarrito = document.getElementById('totalCarrito');
+    
+    if (!listaCarrito || !totalCarrito) return;
+
+    // Obtener el carrito de localStorage
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let total = 0;
+
+    // Mostrar los productos del carrito
+    listaCarrito.innerHTML = ''; // Limpiar lista
+    carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = `${item.producto} - $${item.precio.toLocaleString('es-ES')} x ${item.cantidad}`;
+        listaCarrito.appendChild(li);
+        total += item.precio * item.cantidad;
+    });
+
+    // Mostrar el total del carrito
+    totalCarrito.innerText = `Total: $${total.toLocaleString('es-ES')}`;
+
+    // Inicializar validación del formulario
+    const formCompra = document.getElementById('formCompra');
+    if (formCompra && typeof JustValidate !== 'undefined') {
+        const validation = new JustValidate('#formCompra', {
+            validateBeforeSubmitting: true
+        });
+
+        validation
+            .addField('#nombre', [
+                {
+                    rule: 'required',
+                    errorMessage: 'El nombre es obligatorio',
+                }
+            ])
+            .addField('#apellido', [
+                {
+                    rule: 'required',
+                    errorMessage: 'El apellido es obligatorio',
+                }
+            ])
+            .addField('#direccion', [
+                {
+                    rule: 'required',
+                    errorMessage: 'La dirección es obligatoria',
+                }
+            ])
+            .addField('#identificacion', [
+                {
+                    rule: 'required',
+                    errorMessage: 'La identificación es obligatoria',
+                },
+                {
+                    rule: 'customRegexp',
+                    value: /^[0-9]{7,8}-[a-zA-Z0-9]$/,
+                    errorMessage: 'Debe tener el formato 12345678-1',
+                }
+            ])
+            .addField('#email', [
+                {
+                    rule: 'required',
+                    errorMessage: 'El email es obligatorio',
+                },
+                {
+                    rule: 'email',
+                    errorMessage: 'Por favor, ingresa un email válido',
+                }
+            ])
+            .onSuccess((event) => {
+                event.preventDefault();
+                const formData = new FormData(formCompra);
+                const nombre = formData.get('nombre');
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Compra confirmada!',
+                    text: `Gracias ${nombre} por tu compra. Esperamos que disfrutes de nuestros productos.`,
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    localStorage.removeItem('carrito');
+                    window.location.href = '../index.html';
+                });
+            });
+    }
+}
+
+// Inicializar la página de resumen si estamos en ella
+if (window.location.pathname.includes('resumenCompra.html')) {
+    document.addEventListener('DOMContentLoaded', inicializarResumenCompra);
+}
