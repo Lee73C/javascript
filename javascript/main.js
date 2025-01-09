@@ -8,11 +8,16 @@ fetch('./javascript/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
-        if (window.location.pathname.includes('index.html')) {
+        if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
             mostrarProductos();
         }
     })
-    .catch(error => console.error('Error al cargar productos:', error));
+    .catch(error => {
+        console.error('Error al cargar productos:', error);
+        // Agregar más información para debug
+        console.log('URL actual:', window.location.href);
+        console.log('Pathname:', window.location.pathname);
+    });
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('./javascript/recetas.json')
@@ -20,7 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             window.recetas = data;
         })
-        .catch(error => console.error('Error al cargar las recetas:', error));
+        .catch(error => {
+            console.error('Error al cargar las recetas:', error);
+            console.log('URL actual:', window.location.href);
+        });
 });
 
 if (isIndexPage) {
